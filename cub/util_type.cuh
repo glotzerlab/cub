@@ -33,11 +33,13 @@
 
 #pragma once
 
+#ifndef __CUDACC_RTC__
 #include <iostream>
 #include <limits>
 #include <cfloat>
+#endif
 
-#if (__CUDACC_VER_MAJOR__ >= 9)
+#if (__CUDACC_VER_MAJOR__ >= 9) && !defined(__CUDACC_RTC__)
     #include <cuda_fp16.h>
 #endif
 
@@ -1063,7 +1065,7 @@ struct FpLimits<double>
 };
 
 
-#if (__CUDACC_VER_MAJOR__ >= 9)
+#if (__CUDACC_VER_MAJOR__ >= 9) && !defined(__CUDACC_RTC__)
 template <>
 struct FpLimits<__half>
 {
@@ -1143,7 +1145,7 @@ template <> struct NumericTraits<unsigned long long> :  BaseTraits<UNSIGNED_INTE
 
 template <> struct NumericTraits<float> :               BaseTraits<FLOATING_POINT, true, false, unsigned int, float> {};
 template <> struct NumericTraits<double> :              BaseTraits<FLOATING_POINT, true, false, unsigned long long, double> {};
-#if (__CUDACC_VER_MAJOR__ >= 9)
+#if (__CUDACC_VER_MAJOR__ >= 9) && !defined(__CUDACC_RTC__)
     template <> struct NumericTraits<__half> :          BaseTraits<FLOATING_POINT, true, false, unsigned short, __half> {};
 #endif
 

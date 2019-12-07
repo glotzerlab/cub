@@ -33,6 +33,7 @@
 
 #pragma once
 
+#ifndef __CUDACC_RTC__
 #include <cuda.h>
 
 #include "../util_ptx.cuh"
@@ -420,3 +421,4 @@ __device__ __forceinline__ void ThreadStore(OutputIteratorT itr, T val)
 
 }               // CUB namespace
 CUB_NS_POSTFIX  // Optional outer namespace(s)
+#endif

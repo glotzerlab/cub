@@ -33,6 +33,7 @@
 
 #pragma once
 
+#ifndef __CUDACC_RTC__
 #include <cuda.h>
 
 #include <iterator>
@@ -436,3 +437,4 @@ __device__ __forceinline__ typename std::iterator_traits<InputIteratorT>::value_
 
 }               // CUB namespace
 CUB_NS_POSTFIX  // Optional outer namespace(s)
+#endif

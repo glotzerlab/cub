@@ -36,7 +36,9 @@
 
 #pragma once
 
+#ifndef __CUDACC_RTC__
 #include <stdio.h>
+#endif
 #include "util_namespace.cuh"
 #include "util_arch.cuh"
 
